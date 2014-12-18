@@ -6,7 +6,7 @@ void cut(int start, int end, int text_len, char *text)
 {
 	int i = start; //начальная позиция символа для обрезания
 	int cut_len = end - start; // длина обрезания
-	for (i; i < text_len - cut_len; i++)
+	for (i; i < text_len - cut_len; i++) //Заменить цикл фо на вайл != "\0"
 		*(text + i) = *(text + i + cut_len); //Сдвигаем элементы массива на место вырезанной части
 
 	*(text + text_len - cut_len) = '\0'; //Добавляем символ конца строки

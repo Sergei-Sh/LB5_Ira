@@ -1,0 +1,40 @@
+#define  _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main()
+{
+	char fName[100] = {'t','e','x','t','.','t','x','t'};
+	const int step = 32;
+	const int size = 256;
+
+	setlocale(LC_ALL, ".1251");  
+	FILE *in = fopen(fName, "r"); 
+	if (in == NULL)                          
+	{
+		cout << "Ошибка в открытии файла in.txt" << endl;
+	}
+	else
+	{
+		char str[size];
+		fgets(str, size, in);   //записываем в str первую строку.
+		while (!feof(in))    //пока не конец файла исполняем цикл.
+		{
+			for (int i = 0; i < size; i++)
+			{
+				if ((str[i] > 96) && (str[i] < 123))
+					str[i] = str[i] - step;
+			}
+			cout << str;        //вывод на экран строки
+			fgets(str, 64, in); //чтение следующей строки
+		}
+		_fcloseall();         //закрываем все открытые файлы
+	}
+
+
+	system("pause");
+
+	return 0;
+}

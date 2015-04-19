@@ -4,14 +4,20 @@
 
 using namespace std;
 
-int main()
+int main(int argc, char *argv[])
 {
-	char fName[100] = {'t','e','x','t','.','t','x','t'};
+	//char fName[100] = {'t','e','x','t','.','t','x','t'};
 	const int step = 32;
 	const int size = 256;
 
+	if (argc == 1)
+		return 0;
+
+	//cout << "Enter file name: ";
+	//cin >> fName;
+
 	setlocale(LC_ALL, ".1251");  
-	FILE *in = fopen(fName, "r"); 
+	FILE *in = fopen(argv[1], "r");
 	if (in == NULL)                          
 	{
 		cout << "Ошибка в открытии файла in.txt" << endl;
